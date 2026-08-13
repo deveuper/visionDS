@@ -1,7 +1,7 @@
 {
   "name": "dsh-vision-ds",
   "version": "0.1.0",
-  "description": "visionDS: DeepSeek Harness 视觉技能包。vision-ds（中枢）/ vision-local（免费离线 OCR）/ vision-api（API 识别，失败回退本机 OCR）。Vision skills for DeepSeek Harness: vision-ds hub, vision-local offline OCR, vision-api with offline fallback.",
+  "description": "visionDS: DeepSeek Harness 视觉技能包。vision-ds（默认入口，API 超时自动回退本地）/ vision-ds-local（离线 OCR）/ vision-ds-api（API 识别）/ vision-setting（配置中枢）。Vision skills for DeepSeek Harness: vision-ds default entry with offline fallback, vision-ds-local offline OCR, vision-ds-api API recognition, vision-setting configuration.",
   "type": "module",
   "main": "index.js",
   "files": [

@@ -414,7 +414,7 @@ def recognize(
         text, usage = attempt()
         return text, usage, None
     except RuntimeError as error:
-        if is_transient_error(str(error)):
+        if not args.no_retry and is_transient_error(str(error)):
             print(f"⚠ {provider} 瞬时失败，重试一次…", file=sys.stderr)
             time.sleep(2)
             try:
@@ -499,6 +499,7 @@ def main() -> int:
     parser.add_argument("--timeout", type=int, default=180)
     parser.add_argument("--language", help="本机 OCR 语言（Windows）")
     parser.add_argument("--no-fallback", action="store_true", help="AI 提供商失败时不要回退到本机识别")
+    parser.add_argument("--no-retry", action="store_true", help="瞬时失败不重试，直接进入回退")
     parser.add_argument("--list", action="store_true", help="列出所有提供商及配置状态")
     parser.add_argument("--set", action="append", default=[], metavar="KEY=VALUE", help="持久化配置，如 --set default_provider=glm --set providers.glm.model=glm-4.7v")
     parser.add_argument("--json", action="store_true", help="以 JSON 输出结果")

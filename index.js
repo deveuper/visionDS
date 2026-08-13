@@ -1,8 +1,9 @@
 // visionDS — DeepSeek Harness 技能 bundle 入口。
 // 安装（dsh plugin add github:deveuper/visionDS）后，本插件在应用时把
-// skills/ 下的三个技能注册为运行时技能：vision-ds（中枢）、vision-local
-// （离线 OCR）、vision-api（API 识别）。资源基目录指向各自的技能目录；
-// vision-local / vision-api 通过同级 `../vision-ds` 引用共享脚本。
+// skills/ 下的四个技能注册为运行时技能：vision-ds（默认入口，API 超时
+// 自动回退本地）、vision-ds-local（离线 OCR）、vision-ds-api（API 识别）、
+// vision-setting（配置中枢）。资源基目录指向各自的技能目录；其余三个
+// 技能通过同级 `../vision-ds` 引用共享脚本。
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -37,7 +38,7 @@ function loadSkill(skillName) {
 }
 
 export function apply(ctx) {
-  for (const skillName of ['vision-ds', 'vision-local', 'vision-api']) {
+  for (const skillName of ['vision-ds', 'vision-ds-local', 'vision-ds-api', 'vision-setting']) {
     ctx.skills.register(loadSkill(skillName))
   }
 }
