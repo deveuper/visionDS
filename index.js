@@ -1,11 +1,13 @@
 // visionDS — DeepSeek Harness 技能 bundle 入口。
 // 安装（dsh plugin add github:deveuper/visionDS）后，本插件在应用时把
-// skill/SKILL.md 注册为运行时技能 vision-ds，资源基目录指向包内 skill/ 目录。
+// skills/ 下的三个技能注册为运行时技能：vision-ds（中枢）、vision-local
+// （离线 OCR）、vision-api（API 识别）。资源基目录指向各自的技能目录；
+// vision-local / vision-api 通过同级 `../vision-ds` 引用共享脚本。
 import { readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const skillDir = join(dirname(fileURLToPath(import.meta.url)), 'skill')
+const skillsRoot = join(dirname(fileURLToPath(import.meta.url)), 'skills')
 
 export const name = 'vision-ds'
 export const inject = ['skills']
@@ -21,13 +23,21 @@ function parseFrontmatter(raw) {
   return { meta, body: match[2] }
 }
 
-export function apply(ctx) {
+/** 读取一个技能的 frontmatter 与正文，并给出其资源基目录。 */
+function loadSkill(skillName) {
+  const skillDir = join(skillsRoot, skillName)
   const { meta, body } = parseFrontmatter(readFileSync(join(skillDir, 'SKILL.md'), 'utf8'))
-  ctx.skills.register({
+  return {
     name: meta.name,
     description: meta.description ?? '',
     whenToUse: meta.whenToUse,
     content: body,
     resourceBase: { kind: 'directory', path: skillDir },
-  })
+  }
+}
+
+export function apply(ctx) {
+  for (const skillName of ['vision-ds', 'vision-local', 'vision-api']) {
+    ctx.skills.register(loadSkill(skillName))
+  }
 }

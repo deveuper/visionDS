@@ -1,13 +1,13 @@
 {
   "name": "dsh-vision-ds",
   "version": "0.1.0",
-  "description": "visionDS: 多提供商视觉/OCR 技能（DeepSeek Harness）。MiMo / GLM / 豆包 / Qwen-VL / Moonshot / OpenAI 兼容 / Ollama / LM Studio，失败自动回退 Windows/macOS 自带 OCR。",
+  "description": "visionDS: DeepSeek Harness 视觉技能包。vision-ds（中枢）/ vision-local（免费离线 OCR）/ vision-api（API 识别，失败回退本机 OCR）。Vision skills for DeepSeek Harness: vision-ds hub, vision-local offline OCR, vision-api with offline fallback.",
   "type": "module",
   "main": "index.js",
   "files": [
     "index.js",
     "cordis.patch.yml",
-    "skill"
+    "skills"
   ],
   "keywords": [
     "deepseek-harness",

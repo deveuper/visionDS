@@ -2,7 +2,7 @@
 .env
 
 # 用户持久化配置（--set 写入用户目录，不在这里；防御性排除）
-skill/config/config.json
+skills/vision-ds/config/config.json
 
 # 依赖与产物
 node_modules/
