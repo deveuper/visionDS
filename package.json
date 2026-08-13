@@ -1,0 +1,33 @@
+{
+  "name": "dsh-vision-ds",
+  "version": "0.1.0",
+  "description": "visionDS: 多提供商视觉/OCR 技能（DeepSeek Harness）。MiMo / GLM / 豆包 / Qwen-VL / Moonshot / OpenAI 兼容 / Ollama / LM Studio，失败自动回退 Windows/macOS 自带 OCR。",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "skill"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "skill",
+    "vision",
+    "ocr",
+    "vlm"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deveuper/visionDS.git"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

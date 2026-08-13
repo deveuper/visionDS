@@ -1,0 +1,98 @@
+{
+  "default_provider": "mimo",
+  "providers": {
+    "mimo": {
+      "label": "小米 MiMo V2.5（按量）",
+      "type": "openai",
+      "base_url": "https://api.xiaomimimo.com/v1/chat/completions",
+      "model": "mimo-v2.5",
+      "max_field": "max_completion_tokens",
+      "auth": {"kind": "header", "name": "api-key"},
+      "env_key": "MIMO_API_KEY",
+      "env_base": "MIMO_API_URL",
+      "note": "按量付费，Key 以 sk- 开头"
+    },
+    "mimo-token-plan": {
+      "label": "小米 MiMo V2.5（Token Plan）",
+      "type": "openai",
+      "base_url": "https://token-plan-cn.xiaomimimo.com/v1/chat/completions",
+      "model": "mimo-v2.5",
+      "max_field": "max_completion_tokens",
+      "auth": {"kind": "header", "name": "api-key"},
+      "env_key": "MIMO_API_KEY",
+      "env_base": "MIMO_API_URL",
+      "note": "Key 以 tp- 开头；海外区请覆盖 base_url"
+    },
+    "glm": {
+      "label": "智谱 GLM 视觉",
+      "type": "openai",
+      "base_url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "model": "glm-4.7v",
+      "auth": {"kind": "bearer"},
+      "env_key": "GLM_API_KEY",
+      "note": "模型名以智谱控制台为准，例如 glm-4.7v / glm-4.6v"
+    },
+    "ark": {
+      "label": "火山方舟（豆包视觉）",
+      "type": "openai",
+      "base_url": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+      "model": "doubao-seed-1-6-vision-250815",
+      "auth": {"kind": "bearer"},
+      "env_key": "ARK_API_KEY",
+      "note": "model 可填模型名或推理接入点 ep-xxx；Token Plan 同地址计费"
+    },
+    "dashscope": {
+      "label": "阿里云百炼 Qwen-VL",
+      "type": "openai",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen-vl-max",
+      "auth": {"kind": "bearer"},
+      "env_key": "DASHSCOPE_API_KEY"
+    },
+    "moonshot": {
+      "label": "Moonshot Kimi 视觉",
+      "type": "openai",
+      "base_url": "https://api.moonshot.cn/v1/chat/completions",
+      "model": "moonshot-v1-32k-vision-preview",
+      "auth": {"kind": "bearer"},
+      "env_key": "MOONSHOT_API_KEY"
+    },
+    "openai": {
+      "label": "OpenAI 兼容接口（通用）",
+      "type": "openai",
+      "base_url": "https://api.openai.com/v1/chat/completions",
+      "model": "gpt-4o-mini",
+      "auth": {"kind": "bearer"},
+      "env_key": "OPENAI_API_KEY",
+      "note": "任何 OpenAI 兼容地址都可以改成自己的中转/网关"
+    },
+    "ollama": {
+      "label": "Ollama 本地视觉模型",
+      "type": "openai",
+      "base_url": "http://127.0.0.1:11434/v1/chat/completions",
+      "model": "qwen2.5vl",
+      "auth": {"kind": "bearer", "value": "ollama"},
+      "note": "离线；先运行 ollama serve 并拉取视觉模型"
+    },
+    "lmstudio": {
+      "label": "LM Studio 本地视觉模型",
+      "type": "openai",
+      "base_url": "http://127.0.0.1:1234/v1/chat/completions",
+      "model": "qwen2.5vl-7b-instruct",
+      "auth": {"kind": "bearer", "value": "lm-studio"},
+      "note": "离线；在 LM Studio 中启动本地服务器"
+    },
+    "windows-ocr": {
+      "label": "Windows 自带 OCR",
+      "type": "local",
+      "command": ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "scripts/ocr_windows.ps1"],
+      "note": "离线，免费，只识别图片里的文字"
+    },
+    "macos-ocr": {
+      "label": "macOS 自带视觉（OCR + 分类）",
+      "type": "local",
+      "command": ["swift", "scripts/ocr_macos.swift"],
+      "note": "离线，免费；识别文字并给出常见物体标签"
+    }
+  }
+}
