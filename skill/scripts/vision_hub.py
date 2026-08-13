@@ -58,6 +58,25 @@ EXTENSION_MIME = {
 }
 
 
+def sniff_image_mime(path: Path) -> str | None:
+    """按文件头魔数识别图片类型，兼容无扩展名的文件（如内容寻址的附件对象）。"""
+    try:
+        head = path.open("rb").read(16)
+    except OSError:
+        return None
+    if head.startswith(b"\x89PNG\r\n\x1a\n"):
+        return "image/png"
+    if head.startswith(b"\xff\xd8\xff"):
+        return "image/jpeg"
+    if head.startswith((b"GIF87a", b"GIF89a")):
+        return "image/gif"
+    if head.startswith(b"RIFF") and head[8:12] == b"WEBP":
+        return "image/webp"
+    if head.startswith(b"BM"):
+        return "image/bmp"
+    return None
+
+
 def ensure_utf8() -> None:
     for stream in (sys.stdout, sys.stderr):
         try:
@@ -197,7 +216,7 @@ def image_to_data_url(value: str) -> str:
         raise RuntimeError(f"图片不存在: {value}")
     if path.stat().st_size > MAX_IMAGE_BYTES:
         raise RuntimeError(f"图片超过 50MB 限制: {value}")
-    mime = EXTENSION_MIME.get(path.suffix.lower()) or mimetypes.guess_type(path.name)[0]
+    mime = EXTENSION_MIME.get(path.suffix.lower()) or sniff_image_mime(path) or mimetypes.guess_type(path.name)[0]
     mime = mime or "application/octet-stream"
     encoded = base64.b64encode(path.read_bytes()).decode("ascii")
     if len(encoded) > MAX_IMAGE_BYTES:
