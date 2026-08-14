@@ -1,6 +1,6 @@
 ---
 name: vision-ds-api
-description: 用视觉 API 识别图片：把图片交给配置好的 AI 视觉提供商（MiMo、GLM、豆包、Qwen-VL、Moonshot、OpenAI 兼容网关等）返回内容描述；失败自动回退本机 OCR。确定要用 API 时使用。English: recognizes images through a configured AI vision provider (MiMo, GLM, Doubao, Qwen-VL, Moonshot, OpenAI-compatible); falls back to offline OCR on failure. Use when API recognition is explicitly wanted.
+description: "用视觉 API 识别图片：把图片交给配置好的 AI 视觉提供商（MiMo、GLM、豆包、Qwen-VL、Moonshot、OpenAI 兼容网关等）返回内容描述；失败自动回退本机 OCR。确定要用 API 时使用。English: recognizes images through a configured AI vision provider (MiMo, GLM, Doubao, Qwen-VL, Moonshot, OpenAI-compatible); falls back to offline OCR on failure. Use when API recognition is explicitly wanted."
 ---
 
 # vision-ds-api（API 视觉识别）

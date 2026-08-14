@@ -1,6 +1,6 @@
 ---
 name: vision-ds-local
-description: 免费离线 OCR：用 Windows 自带 OCR / macOS Vision 提取图片里的文字，不调用任何 API、不消耗 Key、无需联网。用户只想要图片文字（OCR）时使用。English: free offline OCR via built-in Windows OCR / macOS Vision — no API, no keys, no network. Use when only the text in an image is wanted.
+description: "免费离线 OCR：用 Windows 自带 OCR / macOS Vision 提取图片里的文字，不调用任何 API、不消耗 Key、无需联网。用户只想要图片文字（OCR）时使用。English: free offline OCR via built-in Windows OCR / macOS Vision — no API, no keys, no network. Use when only the text in an image is wanted."
 ---
 
 # vision-ds-local（免费离线 OCR）

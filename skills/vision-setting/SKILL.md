@@ -1,6 +1,6 @@
 ---
 name: vision-setting
-description: 视觉配置中枢（Vision settings）：配置/更换视觉 API 的 Key、base URL、模型、默认提供商；查看全部提供商与 Key 状态；新增自定义提供商。需要配置或排查识别设置时使用。English: configures vision API keys, base URLs, models, and the default provider; lists providers and key status. Use for any configuration or troubleshooting of vision recognition.
+description: "视觉配置中枢（Vision settings）：配置/更换视觉 API 的 Key、base URL、模型、默认提供商；查看全部提供商与 Key 状态；新增自定义提供商。需要配置或排查识别设置时使用。English: configures vision API keys, base URLs, models, and the default provider; lists providers and key status. Use for any configuration or troubleshooting of vision recognition."
 ---
 
 # vision-setting（视觉配置中枢）

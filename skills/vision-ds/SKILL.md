@@ -1,6 +1,6 @@
 ---
 name: vision-ds
-description: 默认视觉入口（Default vision entry）：先用配置好的视觉 API 识别图片，约 2 分钟没返回自动改用本机 OCR，保证总能出结果。用户发来图片/截图/图片 URL 要"看"时默认走本技能。English: default entry — API recognition first, automatically switching to built-in OCR if the API does not respond within about two minutes. Use by default when the user sends an image.
+description: "默认视觉入口（Default vision entry）：先用配置好的视觉 API 识别图片，约 2 分钟没返回自动改用本机 OCR，保证总能出结果。用户发来图片/截图/图片 URL 要「看」时默认走本技能。English: default entry — API recognition first, automatically switching to built-in OCR if the API does not respond within about two minutes. Use by default when the user sends an image."
 ---
 
 # vision-ds（默认视觉入口）
