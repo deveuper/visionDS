@@ -1,6 +1,6 @@
 ---
 name: vision-ds-local
-description: "免费离线 OCR：用 Windows 自带 OCR / macOS Vision 提取图片里的文字，不调用任何 API、不消耗 Key、无需联网。用户只想要图片文字（OCR）时使用。English: free offline OCR via built-in Windows OCR / macOS Vision — no API, no keys, no network. Use when only the text in an image is wanted."
+description: "免费离线 OCR：用 Windows 自带 OCR / macOS Vision 提取图片里的文字，不调用任何 API、不消耗 Key、无需联网。用户要图片文字、要离线或免费识别、或模型无视觉但需要读出图中文字时使用。English: free offline OCR via built-in Windows OCR / macOS Vision — no API, no network. Use for text extraction, offline or free recognition, or reading text from an image when the model cannot see it."
 ---
 
 # vision-ds-local（免费离线 OCR）
@@ -27,7 +27,8 @@ python3 "<Base directory>/../vision-ds/scripts/vision_hub.py" "<图片路径>" -
 
 - 必须实际运行脚本拿到结果后再回答，禁止猜测图片内容。
 - 本技能只做 OCR 文字提取；要"看图描述内容"用 vision-ds（默认）或 vision-ds-api，配置 API 用 vision-setting。
+- 模型自己有视觉且能看清时，不必调用本技能。
 
 ## English
 
-Free offline OCR: extracts text from images with built-in Windows OCR or macOS Vision. No API keys, no network. Run the command above, then report the recognized text. For full image descriptions use `vision-ds` (default) or `vision-ds-api`; for provider configuration use `vision-setting`.
+Free offline OCR: extracts text from images with built-in Windows OCR or macOS Vision. No API keys, no network. Run the command above, then report the recognized text. For full image descriptions use `vision-ds` (default) or `vision-ds-api`; for provider configuration use `vision-setting`. Skip it when the model already reads the image well.
